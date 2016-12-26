@@ -18,6 +18,7 @@ public class Connection
 {
     private static readonly string connectionString = ConfigurationManager.ConnectionStrings["PFMS"].ConnectionString;
     private static readonly DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.SqlClient");
+	static SqlConnection conn;
 	public Connection()
 	{
         // TODO: Add constructor logic here
@@ -30,9 +31,8 @@ public class Connection
         try
             {
                 
-                     SqlConnection con = new SqlConnection(dbcon);
-                    con.Close();
-                    con.Open();
+                    conn = new SqlConnection(dbcon);                   
+                    conn.Open();
                     return con;
                
             }
